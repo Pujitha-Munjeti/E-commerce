@@ -1,0 +1,12 @@
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 100%;
+    
+  }
+
+  ul{
+    break-inside: avoid; 
+    -webkit-columns: 3;
+    -moz-columns: 3;
+    columns: 3;
+}

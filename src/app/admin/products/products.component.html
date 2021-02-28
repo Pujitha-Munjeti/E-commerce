@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        
+                
+                <div class="form-group mx-auto">
+                    <table id="products">
+                        <thead>
+                            <th>Product name</th>
+                            <th>Product ID</th>
+                            <th>Product Colour</th>
+                            <th>Mfd Date</th>
+                            <th>Cost</th>
+                            <th>Edit the details</th>
+                            <th>Remove Item</th>
+                        </thead>
+                        <tr *ngFor="let p of products, let i=index">
+                            <td>{{p.productname}}</td>
+                            <td>{{p.productID}}</td>
+                            <td>{{p.colour}}</td>
+                            <td>{{p.mfddate}}</td>
+                            <td>{{(p.cost)| currency:"INR"}}</td>
+                            <td class="text-center"><button class="btn btn-success" (click)="edit(i)">edit</button></td>
+                            <td class="text-center"><button class="btn btn-danger" (click)="delete(i)">delete</button></td>
+                        </tr>
+                    </table>
+                </div>          
+            
+            
+                
+     
+    </div>
+</div>

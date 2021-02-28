@@ -1,0 +1,28 @@
+#products {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #products th, #products thead {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+
+
+  #products td,#products tr{
+    background-color: #b8f0f0;
+    border: 1px solid rgb(14, 13, 13);
+    padding: 8px;
+}
+
+#products tr:hover {background-color: rgb(184, 243, 243);}
+
+#products thead {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #e7633b;
+  color: white;
+}

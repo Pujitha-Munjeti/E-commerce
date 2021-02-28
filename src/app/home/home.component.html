@@ -1,0 +1,60 @@
+<body  style="background-color: rgb(186, 223, 238);">
+    
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel" data-slide-to="1"></li>
+          <li data-target="#carousel" data-slide-to="2"></li>
+        </ul>
+        
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/assets/tv.jpg" alt="TV" width="500" height="550">
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/city.jpg" alt="City" width="700" height="550">
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/ruby.jpg" alt="Cosmetics" width="700" height="550">
+          </div>
+        </div>
+        
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#carousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+      
+
+
+<!-- Cards -->
+<div class="container mt-4">
+    <ul>
+        <div class="card mx-auto mb-4 bg-light" *ngFor="let p of products" style="width: 20rem; height: 45rem;"> 
+          <img [src]=p.productImgLink class="card-img-top" style="height: 400px;" alt="..."> 
+          <div class="card-body p-1"> 
+              <p class="card-title">Product Name : {{p.productname}}</p> 
+              <p class="card-title">Product ID : {{p.productID}}</p> 
+              <p class="card-title">Colour : {{p.colour}}</p> 
+              <p class="card-title">Manufacturing date : {{p.mfddate}}</p> 
+              <p class="card-title">Cost : {{(p.cost)| currency:"INR"}}</p> 
+              <p class="card-title">Product Description : {{p.description}}</p> 
+              <div class="text-center"><button class="btn btn-success" >Add to Cart</button> </div>
+          </div> 
+      </div>
+    </ul> 
+</div>
+
+
+<footer class="bg-dark ">
+  <h1 class="text-light text-center d-1">Thanks for ur Interest</h1>
+</footer>
+</body>
+
+ 

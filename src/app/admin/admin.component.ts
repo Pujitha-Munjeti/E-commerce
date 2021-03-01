@@ -20,6 +20,11 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    localStorage.clear();
+    this.router.navigateByUrl("/home");
+  }
+
   onSubmit(ref:any){   
     let productObj = ref.value;
     console.log(productObj);

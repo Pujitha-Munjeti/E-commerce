@@ -31,7 +31,19 @@ export class UserService {
   }
 
   deleteProduct(obj):Observable<any>{
-    console.log("the obj in US is ",obj)
+    //console.log("the obj in US is ",obj)
     return this.hc.post("/admin/delete",obj);
+  }
+
+  usercart(obj):Observable<any>{
+    return this.hc.post("user/addtocart",obj);
+  }
+
+  getCartItems(username):Observable<any>{
+    //console.log("the username is ",username)
+    return this.hc.get("/user/getcartitems/"+username);
+  }
+  deleteCartProduct(obj):Observable<any>{
+    return this.hc.post("/user/deleteproduct",obj);
   }
 }

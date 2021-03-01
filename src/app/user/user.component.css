@@ -1,0 +1,26 @@
+body{
+    background-image: url(/assets/product_banner1.jpg);
+}
+
+#form{
+    height: 100%;
+    background-color:rgb(21, 22, 21);
+    opacity: 0.9;
+}
+.form-label{
+    font-size: 20px;
+    color: white;
+    
+}
+select{
+    border-radius: 6%;
+}
+option{
+    background-color: rgb(43, 42, 42);
+    opacity: 0.8;
+    color: rgb(248, 246, 246);
+}
+span{
+    font-size: 19px;
+    color: red;
+}

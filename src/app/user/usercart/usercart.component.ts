@@ -3,17 +3,19 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/user.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-usercart',
+  templateUrl: './usercart.component.html',
+  styleUrls: ['./usercart.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class UsercartComponent implements OnInit {
 
-  products:any;
+  username;
+  cart:any;
   constructor(private us:UserService,private router:Router) { }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.username=localStorage.getItem("username")
+    this.getCart();
   }
 
   logout(){
@@ -21,10 +23,10 @@ export class ProductsComponent implements OnInit {
     this.router.navigateByUrl("/home");
   }
   
-  getAllProducts(){
-    this.us.getProducts().subscribe(
+  getCart(){
+    this.us.getCartItems(this.username).subscribe(
       res=>{
-        this.products=res["message"]
+        this.cart=res["message"]
       },
       err=>{
         alert("Something went wrong in Adding Course")
@@ -34,20 +36,20 @@ export class ProductsComponent implements OnInit {
   }
 
   edit(n:number){
-    let obj=this.products[n];
+    let obj=this.cart[n];
 
     
   }
 
   delete(n:number){
-    let obj=this.products[n];
+    let obj=this.cart[n];
     console.log("the deleted obj is ",obj)
 
-    this.us.deleteProduct(obj).subscribe(
+    this.us.deleteCartProduct(obj).subscribe(
       res=>{
         if(res["message"]){
           alert("Product removed from E-Commerce")
-          this.router.navigateByUrl("/allproducts")
+          this.router.navigateByUrl("/allcart")
         }
       },
       err=>{
@@ -57,5 +59,6 @@ export class ProductsComponent implements OnInit {
     )
 
   }
+
 
 }

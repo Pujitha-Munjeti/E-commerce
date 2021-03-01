@@ -37,4 +37,43 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  additem(n:number){
+    if(this.username!==null){
+      let obj={
+      username:this.username,
+      productname:this.products[n].productname,
+      productID:this.products[n].productID,
+      colour:this.products[n].colour,
+      mfddate:this.products[n].mfddate,
+      cost:this.products[n].cost,
+      despriction:this.products[n].description,
+      productImgLink:this.products[n].productImgLink
+      }
+      
+      //console.log("this new obj is ",obj)
+      this.us.usercart(obj).subscribe(
+        res=>{
+          if(res["message"]){
+            alert("Add Product added to cart")
+          this.router.navigateByUrl("/usercart")
+          }
+        },
+        err=>{
+          alert("Something went wrong in Adding Course")
+        console.log(err)
+        }
+      )
+      
+    }
+    else{
+      this.router.navigateByUrl("/logincomp")
+    }
+  }
+
+
+  logout(){
+    localStorage.clear();
+    this.router.navigateByUrl("/home");
+  }
+
 }

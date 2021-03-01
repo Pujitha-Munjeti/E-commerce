@@ -76,6 +76,46 @@ userApiObj.post("/login",asyncHandler(async(req,res,next)=>{
     }
 }))
 
+userApiObj.post("/addtocart",asyncHandler(async(req,res,next)=>{
+
+    console.log("the cart obj is ",req.body)
+    let cardCollectionObj= req.app.get("cardCollectionObj");
+
+    let cartObj=req.body;
+
+    await cardCollectionObj.insertOne(cartObj);
+    res.send({message:true})
+
+    
+}))
+
+//get all products
+userApiObj.get("/getcartitems/:username",asyncHandler(async(req,res,next)=>{
+
+    let cardCollectionObj = req.app.get("cardCollectionObj");
+    
+    let products = await cardCollectionObj.find({username:req.params.username}).toArray();
+    res.send({message:products})
+    //console.log(products)
+}))
+
+userApiObj.post("/deleteproduct",asyncHandler(async(req,res,next)=>{
+    
+    let cardCollectionObj = req.app.get("cardCollectionObj");
+    let cartObj =  req.body;
+    
+    //console.log("user object is",cartObj);
+    //check for user in db
+    let product = await cardCollectionObj.findOne({productname:cartObj.productname});
+
+    //product is there
+    if(product!==null){
+        let remove=await cardCollectionObj.deleteOne({productname:cartObj.productname});
+        res.send({message:true});
+    }
+
+}))
+
 
 
 //export

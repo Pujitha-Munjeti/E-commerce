@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl("/home")
           }
           else{
-            alert(res["reason"])
+            alert(res["message"])
             this.router.navigateByUrl("/usercomp")
           }
         },

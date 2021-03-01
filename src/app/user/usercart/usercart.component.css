@@ -1,0 +1,8 @@
+.card{
+    background-color:black;
+    opacity: 0.8;
+    color: snow;
+}
+.card-body{
+    line-height: 15px;
+}

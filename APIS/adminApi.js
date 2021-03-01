@@ -88,6 +88,15 @@ adminApiObj.get("/allproducts",asyncHandler(async(req,res,next)=>{
     res.send({message:products})
 }))
 
+//get one products
+adminApiObj.get("/oneproduct/:productname",asyncHandler(async(req,res,next)=>{
+    
+    let productCollectionObj = req.app.get("productCollectionObj");
+    let products = await productCollectionObj.findOne({productname:req.params.productname});
+    res.send({message:products})
+}))
+
+
 
 //edit product details
 adminApiObj.post("/editproduct",asyncHandler(async(req,res,next)=>{

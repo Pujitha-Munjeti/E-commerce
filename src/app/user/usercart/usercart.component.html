@@ -1,39 +1,29 @@
 <div class="bg-light px-5 text-right">
-    <a routerLink="/home" class="d-1 px-5">HOME</a>
     <button class="btn btn-success float-end px-4 my-2" (click)="logout()">Logout</button>
 </div>
 
-<div class="container-fluid">
-    <p class="display-4 text-primary text-center mt-3">Products List of {{username}}</p>
-    <div class="row mt-5">
-        
-                
-                <div class="form-group mx-auto">
-                    <table id="products">
-                        <thead>
-                            <th>Product name</th>
-                            <th>Product ID</th>
-                            <th>Product Colour</th>
-                            <th>Mfd Date</th>
-                            <th>Cost</th>
-                            <th>Edit the details</th>
-                            <th>Remove Item</th>
-                        </thead>
-                        <tr *ngFor="let p of cart, let i=index">
-                            <td>{{p.productname}}</td>
-                            <td>{{p.productID}}</td>
-                            <td>{{p.colour}}</td>
-                            <td>{{p.mfddate}}</td>
-                            <td>{{(p.cost)| currency:"INR"}}</td>
-                            <td class="text-center"><button class="btn btn-success" (click)="edit(i)">edit</button></td>
-                            <td class="text-center"><button class="btn btn-danger" (click)="delete(i)">delete</button></td>
-                        </tr>
-                    </table>
-                </div>          
-            
-            
-                
-     
-    </div>
+<div class="container-fluid" style="background-image: url(/assets/cart.jpg);height: 100%;">
+    <p class="display-4 text-dark text-center mt-3">Products in Cart of {{username}}</p>
+    
+    <div class="card mb-3 mx-auto" *ngFor="let p of cart, let i=index" style="max-width: 700px;max-height: 100%;">
+        <div class="row">
+          <div class="col-md-4">
+            <img [src]=p.productImgLink class="card-img-top" style="width: 100%;" alt="..."> 
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{p.productname}}</h5>
+              <p class="card-title">Product ID : {{p.productID}}</p> 
+              <p class="card-title">Colour : {{p.colour}}</p> 
+              <p class="card-title">Manufacturing date : {{p.mfddate}}</p> 
+              <p class="card-title">Cost : {{(p.cost)| currency:"INR"}}</p> 
+              <p class="card-title">Product Description : {{p.description}}</p> 
+              <td class="text-center"><button class="btn btn-danger" (click)="delete(i)">delete</button></td>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 </div>
 

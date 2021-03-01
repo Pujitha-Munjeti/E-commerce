@@ -4,4 +4,8 @@ a{
     font-family: sans-serif;
     padding-right: 10px;
     color: navy;
+    text-decoration: none;
+}
+a:hover{
+    color: rgb(13, 65, 65);
 }

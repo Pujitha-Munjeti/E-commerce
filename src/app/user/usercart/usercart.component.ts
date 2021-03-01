@@ -35,11 +35,6 @@ export class UsercartComponent implements OnInit {
     )
   }
 
-  edit(n:number){
-    let obj=this.cart[n];
-
-    
-  }
 
   delete(n:number){
     let obj=this.cart[n];

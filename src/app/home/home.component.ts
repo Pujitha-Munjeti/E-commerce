@@ -17,21 +17,33 @@ export class HomeComponent implements OnInit {
     this.username=localStorage.getItem("username")
     this.getAllProducts();
   }
-  user(){
-    if(this.username==null){
-      return false;
-    }
-    else{
-      return true;
-    }
-  }
+  
   getAllProducts(){
     this.us.getProducts().subscribe(
       res=>{
         this.products=res["message"]
       },
       err=>{
-        alert("Something went wrong in Adding Course")
+        alert("Something went wrong in getting all products")
+        console.log(err)
+      }
+    )
+  }
+
+  viewitem(n:number){
+    
+    let viewObj=this.products[n];
+    console.log(viewObj);
+    this.us.viewItem(viewObj).subscribe(
+      res=>{
+        if(res["message"]){
+          localStorage.setItem("token",res["signedToken"])
+          localStorage.setItem("productname",res["productname"])
+          this.router.navigateByUrl("/view");
+        }
+      },
+      err=>{
+        alert("Something went wrong in getting details")
         console.log(err)
       }
     )
@@ -46,7 +58,7 @@ export class HomeComponent implements OnInit {
       colour:this.products[n].colour,
       mfddate:this.products[n].mfddate,
       cost:this.products[n].cost,
-      despriction:this.products[n].description,
+      description:this.products[n].description,
       productImgLink:this.products[n].productImgLink
       }
       

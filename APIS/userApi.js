@@ -78,7 +78,7 @@ userApiObj.post("/login",asyncHandler(async(req,res,next)=>{
 
 userApiObj.post("/addtocart",asyncHandler(async(req,res,next)=>{
 
-    console.log("the cart obj is ",req.body)
+    //console.log("the cart obj is ",req.body)
     let cardCollectionObj= req.app.get("cardCollectionObj");
 
     let cartObj=req.body;
@@ -86,6 +86,21 @@ userApiObj.post("/addtocart",asyncHandler(async(req,res,next)=>{
     await cardCollectionObj.insertOne(cartObj);
     res.send({message:true})
 
+    
+}))
+
+userApiObj.post("/viewitem",asyncHandler(async(req,res,next)=>{
+    let cardCollectionObj=req.app.get("cardCollectionObj");
+    //console.log("In ViewItem ",req.body)
+    let Obj=req.body;
+    let viewItem=await cardCollectionObj.findOne({productname:Obj.productname});
+    if(viewItem!==null){
+        //create a token
+        let token = await jwt.sign({productname:viewItem.productname},"abcd",{expiresIn:10});
+
+        //send token
+        res.send({message:true,signedToken:token,productname:viewItem.productname});
+    }
     
 }))
 

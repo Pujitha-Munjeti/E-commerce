@@ -1,0 +1,19 @@
+<p>viewitem works!</p>
+<div class="container mt-4">
+    <ul>
+        <div class="card mx-auto mb-4 bg-light"  style="width: 20rem; height: 47rem;"> 
+          <img [src]=product.productImgLink class="card-img-top" style="height: 400px;" alt="..."> 
+          <div class="card-body p-1"> 
+            <h4 class="card-title">{{product.productname}}</h4>
+            <p class="card-title">Product ID : {{product.productID}}</p> 
+            <p class="card-title">Colour : {{product.colour}}</p> 
+            <p class="card-title">Manufacturing date : {{product.mfddate}}</p> 
+            <p class="card-title">Cost : {{(product.cost)| currency:"INR"}}</p> 
+            <p class="card-title">Product Description : {{product.description}}</p> 
+            <div class="text-center">
+              <button class="btn btn-success" (click)="additem()">Add to Cart</button>
+            </div>
+          </div> 
+      </div>
+    </ul> 
+</div>
